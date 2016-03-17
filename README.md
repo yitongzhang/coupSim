@@ -1,0 +1,2 @@
+# coupSim
+Coup endgame simulator
