@@ -15,13 +15,11 @@ def duke(player1gold, player2gold, player1influence, player2influence, turn):
 		player2gold = player2gold + 3
 
 	goldlist = [player1gold, player2gold]
-	print "duke rocks!"
 	return goldlist
 
 def captain(player1gold, player2gold, player1influence, player2influence, turn):
 	if turn%2 == 1:
-		if player2influence == "captain" or "ambassador":
-			print "p2 is a %s" % player2influence
+		if player2influence == "captain":
 			player1gold = player1gold + 2
 			print "countered!"	
 		else:
@@ -29,37 +27,35 @@ def captain(player1gold, player2gold, player1influence, player2influence, turn):
 				player1gold = player1gold + 1
 				player2gold = player2gold - 1
 
-			# elif player2gold == 0 and player2influence == "duke":
-			# 	player1gold = player1gold + 1
+			elif player2gold == 0 and player2influence == "duke":
+				player1gold = player1gold + 1
 
-			# elif player2gold == 0:
-			# 	player1gold = player1gold + 2
+			elif player2gold == 0:
+				player1gold = player1gold + 2
 
 			else:
 				player1gold = player1gold + 2
 				player2gold = player2gold - 2
 
 	else:
-		if player1influence == "captain" or "ambassador":
+		if player1influence == "captain":
 			player2gold = player2gold + 2
-			print "p1 is a %s" % player1influence
 			print "countered!"
 		else:
 			if player1gold == 1:
 				player2gold = player2gold + 1
 				player1gold = player1gold - 1
 
-			# elif player1gold == 0 and player1influence == "duke":
-			# 	player2gold = player2gold + 1
+			elif player1gold == 0 and player1influence == "duke":
+				player2gold = player2gold + 1
 
-			# elif player1gold == 0:
-			# 	player2gold = player2gold + 2
+			elif player1gold == 0:
+				player2gold = player2gold + 2
 			else:
 				player2gold = player2gold + 2
 				player1gold = player1gold - 2
 				print "stolen!"
 
-	print "captain rocks!"
 	goldlist = [player1gold, player2gold]
 	return goldlist
 
@@ -118,6 +114,7 @@ for i in range(0,7):
 
 		playermoney = [i,j]
 		print "\n--------------evaluating p1 %d and p2 %d-------------------" %(i, j)
+		print "p1 is %s, p2 is a %s" % (player1influence, player2influence)
 
 		#run through turns as long as the no one has won
 		while (player1win == False and player2win == False):
@@ -179,9 +176,8 @@ for i in range(0,7):
 
 
 
-	print "finished testing one value of i j"
+	print "=========finished testing one value of i j"
 
-print "finished testing one value of all values of j for 1 i"
 
 
 
