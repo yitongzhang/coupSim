@@ -6,6 +6,12 @@ player1money = 0
 player2money = 0
 player1influence = None
 player2influence = None
+dukeoutcome={}
+captainoutcome={}
+contessaoutcome={}
+assassinoutcome={}
+
+outcomedict ={"duke":dukeoutcome,"captain":captainoutcome,"contessa":contessaoutcome,"assassin":assassinoutcome}
 
 # define all role functions
 def duke(player1gold, player2gold, player1influence, player2influence, turn):
@@ -104,7 +110,7 @@ print "what is Player 2's influence?"
 player2influence = raw_input().lower()
 
 
-# Run the sim for every possible money combination 
+# Run the sim for every possible money combination for 2 given roles
 
 # iterate all player 1 money
 for i in range(0,7):
@@ -166,8 +172,14 @@ for i in range(0,7):
 
 		if player1win == True:
 			print "At %d, %d, player 1 wins. Player 1 has %d gold. Player 2 has %d gold." %(i,j,playermoney[0], playermoney[1])
+			#store outcome in dictionary
+			outcomedict[player1influence][str(player2influence)+str(i)+str(j)] = "win"
+
 		elif player2win == True:
-			print "At %d, %d, player 2 wins. Player 1 has %d gold. Player 2 has %d gold." %(i,j,playermoney[0], playermoney[1])
+			print "At %d, %d, player 1 loses. Player 1 has %d gold. Player 2 has %d gold." %(i,j,playermoney[0], playermoney[1])
+			#store outcome in dictionary
+			outcomedict[player1influence][str(player2influence)+str(i)+str(j)] = "lose"
+
 		else:
 			print "something is very wrong"
 		player1win = False
@@ -176,7 +188,9 @@ for i in range(0,7):
 
 
 
-	print "=========finished testing one value of i j"
+	print "=========finished testing all values of j for %d \n\n" %i
+
+print "for a %s : %s" %(player1influence, outcomedict[player1influence].items())
 
 
 
