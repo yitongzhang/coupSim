@@ -1,4 +1,8 @@
 # initialize variables
+import json
+import csv
+
+
 indTest = "no"
 turn = 1
 player1win = False
@@ -291,6 +295,28 @@ else:
 	print "for a contessa : %s \n\n" %(outcomedict["contessa"].items())
 	print "for a assassin : %s \n\n" %(outcomedict["assassin"].items())
 
+#write
+writer1 = csv.writer(open('dukeData.csv', 'wb'))
+for key1, value1 in outcomedict["duke"].items():
+   writer1.writerow([key1, value1])
+
+writer2 = csv.writer(open('assassinData.csv', 'wb'))
+for key2, value2 in outcomedict["assassin"].items():
+   writer2.writerow([key2, value2])
+
+writer3 = csv.writer(open('captainData.csv', 'wb'))
+for key2, value2 in outcomedict["captain"].items():
+   writer3.writerow([key2, value2])
+
+writer4 = csv.writer(open('contessaData.csv', 'wb'))
+for key2, value2 in outcomedict["contessa"].items():
+   writer4.writerow([key2, value2])
 
 
-	
+
+
+
+
+
+
+
